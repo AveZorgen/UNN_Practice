@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Temp\Temp\Calc.cpp" />
-    <ClCompile Include="..\..\Temp\Temp\IO.cpp" />
-    <ClCompile Include="..\..\Temp\Temp\main.cpp" />
+    <ClCompile Include="Calc.cpp" />
+    <ClCompile Include="IO.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Temp\Temp\Calc.h" />
-    <ClInclude Include="..\..\Temp\Temp\IO.h" />
+    <ClInclude Include="Calc.h" />
+    <ClInclude Include="IO.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

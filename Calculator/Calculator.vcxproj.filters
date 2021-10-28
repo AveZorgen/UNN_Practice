@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Temp\Temp\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Temp\Temp\IO.cpp">
+    <ClCompile Include="Calc.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Temp\Temp\Calc.cpp">
+    <ClCompile Include="IO.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Temp\Temp\Calc.h">
+    <ClInclude Include="Calc.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Temp\Temp\IO.h">
+    <ClInclude Include="IO.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
