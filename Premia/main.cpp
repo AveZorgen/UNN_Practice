@@ -1,58 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "options.h"
+#include "preparing.h"
+#include "working.h"
+#include "resulting.h"
 
-#define MAX_ST_ID 200
-#define MAX_OBJ_ID 50
-#define N_STUD 5
-
-void add_obj(int a[], int el) {
-	a[a[0] + 1] = el; a[0]++;
-}
+//Р”Р°РЅРѕ:
+//	* СЃСѓРјРјР° (РµС‘ РЅР°РґРѕ СЂР°СЃРїСЂРµРґРµР»РёС‚СЊ)
+//	* СЃРїРёСЃРѕРє: РЅРѕРјРµСЂ Р·Р°С‡С‘С‚РєРё, РЅРѕРјРµСЂ РїСЂРµРґРјРµС‚Р°, РѕС†РµРЅРєР°
+//
+//Р—Р°РґР°РЅРёРµ
+//	+ РєС‚Рѕ СЃРґР°РІР°Р» СЌРєР·Р°РјРµРЅ?
+//	+ СЃСЂРµРґРЅРёР№ Р±Р°Р»Р» СЃС‚СѓРґРµРЅС‚РѕРІ
+//	+ СЃС‚РёРїРµРЅРґРёСЏ:
+//		 РІСЃРµ 5 - x2
+//		 РµСЃС‚СЊ 3- x0
+//		 РёРЅР°С‡Рµ - x1
 
 
 int main() {
-	float Summ = 1000; int k = 0;
-	int students[N_STUD][3] = { {1,2,5}, //ID студента, ID предмета, Оценка за предмет
-								{2,3,4},
-								{3,1,3},
-								{2,2,5},
-								{1,3,5} }; //перед добавлением учеников, увеличить n_stud
-	float st_inf[MAX_ST_ID][5]{}; //Сумма баллов, Кол-во оценок, Средняя оценка, Коэф стипендии, Размер стипендии
-	int objects[MAX_OBJ_ID][N_STUD + 1]{}; //id предметов от 0 до n_obj-1
-	int st_id, obj_id, mark;
+	float Summ = 1000; int k = 0; 
+	// int students[N_STUD][3] = {  {1,2,5}, 
+	// 								{2,3,4},
+	// 								{3,1,3},
+	// 								{2,2,5},
+	// 								{1,3,5} };
+	int students[N_STUD][3]={}; //ID СЃС‚СѓРґРµРЅС‚Р°, ID РїСЂРµРґРјРµС‚Р°, РћС†РµРЅРєР° Р·Р° РїСЂРµРґРјРµС‚
+	float st_inf[MAX_ST_ID][N_INFO]{}; //РЎСѓРјРјР° Р±Р°Р»Р»РѕРІ, РљРѕР»-РІРѕ РѕС†РµРЅРѕРє, РЎСЂРµРґРЅСЏСЏ РѕС†РµРЅРєР°, РљРѕСЌС„ СЃС‚РёРїРµРЅРґРёРё, Р Р°Р·РјРµСЂ СЃС‚РёРїРµРЅРґРёРё
+	int subjects[MAX_SUBJ_ID][N_STUD + 1]{};
 
-	for (int i = 0; i < N_STUD; i++) {
-		st_id = students[i][0]; obj_id = students[i][1]; mark = students[i][2];
+	set_info(students); // Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ students
 
-		add_obj(objects[obj_id], st_id);
+	fill_massives(students,subjects,st_inf); //Р—Р°РїРѕР»РЅРµРЅРёРµ subjects Рё st_info РёР· Р·Р°РґР°РЅРЅРѕРіРѕ students
+	general_coef(&k, st_inf); //Р Р°СЃРїСЂРµРґРµР»РµРЅРёРµ СЃС‚РёРїРµРЅРґРёРё
 
-		st_inf[st_id][0] += mark; st_inf[st_id][1]++; st_inf[st_id][2] = st_inf[st_id][0] / st_inf[st_id][1];
-
-		if (st_inf[st_id][2] == 5) st_inf[st_id][3] = 2;
-		else if (mark <= 3) st_inf[st_id][3] = -1;
-		else if (st_inf[st_id][3] != -1) st_inf[st_id][3] = 1;
-	}
-
-	for (int i = 0; i < MAX_OBJ_ID; i++) { //Те, кто сдавал предметы
-		if (objects[i][0] > 0) {
-			printf("%d: ", i);
-			for (int j = 0; j < objects[i][0]; j++)
-				printf("%d ", objects[i][j + 1]);
-			printf("\n");
-		}
-	}
-
-	for (int i = 0; i < MAX_ST_ID; i++) { //Распределение стипендии
-		if (st_inf[i][1] > 0) {
-			if (st_inf[i][3] == -1) st_inf[i][3] = 0;
-			k += st_inf[i][3];
-		}
-	}
-
-	for (int i = 0; i < MAX_ST_ID; i++) { //Вывод информации по студентам
-		if (st_inf[i][1] > 0) {
-			st_inf[i][4] = (Summ / k) * st_inf[i][3];
-			printf("\nID: %d, SummM: %5.2f, Kol-vo: %3.2f, Sred: %.2f, K: %.2f, Prem: %.2f", i, st_inf[i][0], st_inf[i][1], st_inf[i][2], st_inf[i][3], st_inf[i][4]);
-		}
-	}
+	about_exams(subjects); //РљС‚Рѕ СЃРґР°РІР°Р» РїСЂРµРґРјРµС‚С‹
+	result(st_inf,Summ,k); //Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РїРѕ СЃС‚СѓРґРµРЅС‚Р°Рј
 }

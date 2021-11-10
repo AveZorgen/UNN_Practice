@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <cstdlib>
+#include <ctime>
 #define R 10
 
 int in(int elem, int arr[], int size) {
@@ -37,6 +38,7 @@ void out(int arr[], int size) {
 }
 
 int main() {
+	srand(static_cast<unsigned int>(time(0)));
 	int* unioN = nullptr;
 	int* inter = nullptr;
 	int u_size = 0, i_size = 0;

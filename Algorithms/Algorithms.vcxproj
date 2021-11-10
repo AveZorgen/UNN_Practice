@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{987318f2-b994-4348-bd90-c94baa955fc0}</ProjectGuid>
-    <RootNamespace>Premia</RootNamespace>
+    <ProjectGuid>{5afdcd03-62c1-46c2-857c-6fda7216a271}</ProjectGuid>
+    <RootNamespace>Algorithms</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -140,15 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="preparing.cpp" />
-    <ClCompile Include="resulting.cpp" />
-    <ClCompile Include="working.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="options.h" />
-    <ClInclude Include="preparing.h" />
-    <ClInclude Include="resulting.h" />
-    <ClInclude Include="working.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

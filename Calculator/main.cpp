@@ -5,14 +5,14 @@
 using namespace std;
 
 int main() {
-	float b, res = 0;
+	float b, a = 0;
 	int op;
-	input(&res);
+	input(&a);
 	while (inpOption(&op)) {
 		input(&b);
-		if (!calcThis(op, res, b, &res))
-			out(res);
-		else outError(calcThis(op, res, b, &res));
+		if (!calcThis(op, a, b, &a))
+			out(a);
+		else outError(calcThis(op, a, b, &a));
 	}
 	return 0;
 }
